@@ -40,7 +40,7 @@ export const Posts = () => {
 
   return (
     <div className="w-full md:w-3/4 md:mx-auto">
-      <h1 className="text-3xl text-red-400 font-medium uppercase tracking-wider underline text-center mb-5">
+      <h1 className="text-5xl text-violet-500 font-medium uppercase tracking-wider underline text-center p-8">
         posts
       </h1>
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid md:grid-cols-3 gap-5">

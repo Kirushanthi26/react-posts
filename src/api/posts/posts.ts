@@ -20,6 +20,21 @@ export async function getAllPostApi() {
     return response.data;
   } catch (error) {
     throw error;
-    console.log(error);
+  }
+}
+
+export async function getPostByIdApi(id: number) {
+  try {
+    const response = await axios.get<PostsData>(
+      `https://jsonplaceholder.typicode.com/posts/${id}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
   }
 }

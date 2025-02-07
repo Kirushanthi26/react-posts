@@ -1,14 +1,17 @@
+import { useNavigate } from "react-router";
 import { PostsData } from "../../../api/posts/posts";
-import { Card } from "../../../components/ui/Card";
 
 type postItemProps = {
   post: PostsData;
 };
 export const PostItems = ({ post }: postItemProps) => {
+  const navigate = useNavigate();
   return (
-    <Card className="space-y-4">
+    <div
+      className="bg-white p-4 m-4 shadow-md rounded-md space-y-4 w-full min-h-fit cursor-pointer transition-colors hover:bg-violet-100 "
+      onClick={() => navigate(`/post/${post.id}`)}
+    >
       <h1 className="font-semibold text-xl">{post.title}</h1>
-      <p>{post.body}</p>
-    </Card>
+    </div>
   );
 };
