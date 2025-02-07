@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { getAllPostApi, PostsData } from "../../../api/posts/posts";
 import { useQuery } from "@tanstack/react-query";
 import { PostItems } from "../components/PostItems";
+import { LoadingComponent } from "../../../components/ui/LoadingComponent";
+import { ErrorLoadingComponent } from "../../../components/ui/ErrorLoadingComponent";
 
 export const Posts = () => {
   const [posts, setPosts] = useState<PostsData[]>([]);
@@ -10,6 +12,7 @@ export const Posts = () => {
     data: listOfPosts,
     isLoading,
     isError,
+    error,
   } = useQuery<PostsData[], Error>({
     queryKey: ["posts"],
     queryFn: getAllPostApi,
@@ -22,11 +25,15 @@ export const Posts = () => {
   }, [listOfPosts]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <LoadingComponent />;
   }
 
   if (isError) {
-    return <div>Error...</div>;
+    return (
+      <ErrorLoadingComponent>
+        <span>{error.message}</span>
+      </ErrorLoadingComponent>
+    );
   }
 
   console.log(posts);
