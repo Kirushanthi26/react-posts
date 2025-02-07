@@ -7,10 +7,10 @@ export type PostsData = {
   body: string;
 };
 
-export async function getAllPostApi() {
+export async function getAllPostApi(pageParam: number) {
   try {
     const response = await axios.get<PostsData[]>(
-      "https://jsonplaceholder.typicode.com/posts",
+      `https://jsonplaceholder.typicode.com/posts/?_limit=30&_page=${pageParam}`,
       {
         headers: {
           "Content-Type": "application/json",
