@@ -40,7 +40,7 @@ export const Post = () => {
   }
 
   return (
-    <div className="grid place-items-center h-screen w-2/4 mx-auto">
+    <div className="grid place-items-center mx-4 h-screen md:w-2/4 md:mx-auto">
       <Button
         onClick={() => {
           navigate(-1);
