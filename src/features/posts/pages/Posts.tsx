@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { getAllPostApi, PostsData } from "@/api/posts/posts";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { PostItems } from "../components/PostItems";
@@ -8,6 +8,7 @@ import { useInView } from "react-intersection-observer";
 
 export const Posts = () => {
   const [posts, setPosts] = useState<PostsData[]>([]);
+  const [searchQuery, setSearchQuery] = useState<string>("");
   const PAGE_SIZE = 30;
   const TOTAL_DATA_COUNT = 100;
 
@@ -61,14 +62,29 @@ export const Posts = () => {
     );
   }
 
+  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(e.target.value.toLowerCase());
+  };
+
+  const filteredPosts = posts.filter((post) =>
+    post.title.toLowerCase().includes(searchQuery)
+  );
+
   return (
     <div className="w-full md:w-3/4 md:mx-auto">
       <h1 className="text-5xl text-violet-500 font-medium uppercase tracking-wider underline text-center p-8">
         posts
       </h1>
+      <input
+        type="text"
+        placeholder="Search by title..."
+        value={searchQuery}
+        onChange={handleSearchChange}
+        className="w-full p-2 border border-gray-300 rounded"
+      />
       <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid md:grid-cols-3 gap-5">
-        {posts?.length > 0 ? (
-          posts.map((post, index) => (
+        {filteredPosts?.length > 0 ? (
+          filteredPosts.map((post, index) => (
             <PostItems post={post} key={index} num={index} />
           ))
         ) : (
