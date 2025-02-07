@@ -1,5 +1,6 @@
 import error404 from "@/assets/404.png";
 import { useNavigate } from "react-router";
+import { Button } from "../../../components/ui/Button";
 
 export const NotFoundPage = () => {
   const navigate = useNavigate();
@@ -11,14 +12,13 @@ export const NotFoundPage = () => {
       <span className="text-3xl text-neutral-800 font-mdium mt-10">
         We couldn&apos;t find the content you were looking for
       </span>
-      <button
+      <Button
         onClick={() => {
           navigate(-1);
         }}
-        className="m-4 px-8 py-2 bg-violet-500 rounded"
       >
         Go Back to the Previous Page
-      </button>
+      </Button>
     </div>
   );
 };

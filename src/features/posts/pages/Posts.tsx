@@ -1,7 +1,48 @@
+import { useEffect, useState } from "react";
+import { getAllPostApi, PostsData } from "../../../api/posts/posts";
+import { useQuery } from "@tanstack/react-query";
+import { PostItems } from "../components/PostItems";
+
 export const Posts = () => {
+  const [posts, setPosts] = useState<PostsData[]>([]);
+
+  const {
+    data: listOfPosts,
+    isLoading,
+    isError,
+  } = useQuery<PostsData[], Error>({
+    queryKey: ["posts"],
+    queryFn: getAllPostApi,
+  });
+
+  useEffect(() => {
+    if (listOfPosts) {
+      setPosts(listOfPosts);
+    }
+  }, [listOfPosts]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div>Error...</div>;
+  }
+
+  console.log(posts);
+
   return (
-    <div>
-      <h1 className="text-3xl text-red-400 ">posts</h1>
+    <div className="w-full md:w-3/4 md:mx-auto">
+      <h1 className="text-3xl text-red-400 font-medium uppercase tracking-wider underline text-center mb-5">
+        posts
+      </h1>
+      <div className=" grid grid-cols-1 sm:grid-cols-2 md:grid md:grid-cols-3 gap-5">
+        {posts?.length > 0 ? (
+          posts.map((post) => <PostItems post={post} key={post.id} />)
+        ) : (
+          <p>there is no any Post</p>
+        )}
+      </div>
     </div>
   );
 };

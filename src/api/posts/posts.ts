@@ -1,0 +1,25 @@
+import axios from "axios";
+
+export type PostsData = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
+
+export async function getAllPostApi() {
+  try {
+    const response = await axios.get<PostsData[]>(
+      "https://jsonplaceholder.typicode.com/posts",
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
+    return response.data;
+  } catch (error) {
+    throw error;
+    console.log(error);
+  }
+}
