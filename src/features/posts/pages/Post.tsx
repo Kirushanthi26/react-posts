@@ -49,11 +49,13 @@ export const Post = () => {
       >
         Go Back
       </Button>
-      <div className="bg-white p-4 m-4 shadow-md rounded-md space-y-8 w-full min-h-fit cursor-pointer">
+      <div className="bg-white p-8 m-4 shadow-md rounded-md space-y-8 w-full min-h-fit cursor-pointer">
         {post !== null && (
           <>
             <h1 className="font-semibold text-5xl">{post.title}</h1>
-            <p className=" text-xl">{post.body}</p>
+            <p className=" text-xl border-l-4 border-slate-400 pl-4">
+              {post.body}
+            </p>
           </>
         )}
       </div>
