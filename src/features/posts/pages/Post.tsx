@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { getPostByIdApi, PostsData } from "../../../api/posts/posts";
+import { getPostByIdApi, PostsData } from "@/api/posts/posts";
 import { useQuery } from "@tanstack/react-query";
 import { useNavigate, useParams } from "react-router";
-import { LoadingComponent } from "../../../components/ui/LoadingComponent";
-import { ErrorLoadingComponent } from "../../../components/ui/ErrorLoadingComponent";
-import { Button } from "../../../components/ui/Button";
+import { LoadingComponent } from "@/components/ui/LoadingComponent";
+import { ErrorLoadingComponent } from "@/components/ui/ErrorLoadingComponent";
+import { Button } from "@/components/ui/Button";
 
 export const Post = () => {
   const [post, setPost] = useState<PostsData | null>(null);

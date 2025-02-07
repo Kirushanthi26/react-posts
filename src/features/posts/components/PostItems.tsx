@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { PostsData } from "../../../api/posts/posts";
+import { PostsData } from "@/api/posts/posts";
 
 type postItemProps = {
   post: PostsData;

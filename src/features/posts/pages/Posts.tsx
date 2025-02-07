@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { getAllPostApi, PostsData } from "../../../api/posts/posts";
+import { getAllPostApi, PostsData } from "@/api/posts/posts";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import { PostItems } from "../components/PostItems";
-import { LoadingComponent } from "../../../components/ui/LoadingComponent";
-import { ErrorLoadingComponent } from "../../../components/ui/ErrorLoadingComponent";
+import { LoadingComponent } from "@/components/ui/LoadingComponent";
+import { ErrorLoadingComponent } from "@/components/ui/ErrorLoadingComponent";
 import { useInView } from "react-intersection-observer";
 
 export const Posts = () => {
