@@ -2,6 +2,8 @@
 
 A React-based web application that fetches and displays posts with infinite scrolling using React Query and Intersection Observer API.
 
+- [Live Demo](https://react-posts-dd.netlify.app)
+
 ## Table of Contents
 
 - [Features](#features)
